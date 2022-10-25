@@ -1,4 +1,4 @@
-# Three.js boilerplate
+# big-win-cube
 This is a simple three.js boilerplate for new projects, feel free to contribute!
 
 ### Setup
