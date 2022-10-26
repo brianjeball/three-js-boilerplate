@@ -16,6 +16,15 @@
         display: block;
       }
 
+      .key {
+        min-width: 30px;
+        height: 30px;
+        font-size: 14px;
+        font-weight: 800;
+        margin-right: 10px;
+        margin-top: 5px;
+      }
+
       .inverted {
         background-color: white;
         color: black;
@@ -106,6 +115,7 @@
     </style>
   </head>
   <body style="overflow: hidden">
+    <script src="./scripts.js" type="module"></script>
     <div class="main">
       <div hidden class="lyrics-container">
         <ul class="lyrics">
@@ -296,13 +306,23 @@
             <td>Rotate Down</td>
           </tr>
         </table>
+        <div>
+          <button data-behavior="key:t" class="key">T</button>
+          <button data-behavior="key:l" class="key">L</button>
+          <br />
+          <button data-behavior="key:ArrowUp" class="key">up</button>
+          <button  data-behavior="key:ArrowDown" class="key">down</button>
+          <br />
+          <button data-behavior="key:ArrowLeft" class="key">left</button>
+          <button data-behavior="key:ArrowRight" class="key">right</button>
+        </div>
       </div>
 
       <div
         style="
           position: absolute;
           right: 0;
-          top: 300px;
+          top: 360px;
           color: white;
           padding: 20px;
           text-align: right;
@@ -319,6 +339,5 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
-    <script src="./scripts.js" type="module"></script>
   </body>
 </html>

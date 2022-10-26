@@ -1312,8 +1312,8 @@ camera.position.z = 5;
 var animate = function () {
 	requestAnimationFrame(animate);
 
-	cube.rotation.x += 0.001;
-	cube.rotation.y += 0.001;
+	// cube.rotation.x += 0.001;
+	// cube.rotation.y += 0.001;
 
 	renderer.render(scene, camera);
 };
@@ -1465,6 +1465,13 @@ function handleRotationSubmit() {
 	logStat(cube.rotation)
 	return;
 }
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+	key.addEventListener('click', () => {
+		checkKey({key: key.dataset.behavior.replace('key:','')})
+	})
+})
 
 function checkKey(e) {
 
