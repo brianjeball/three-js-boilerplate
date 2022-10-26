@@ -11,19 +11,19 @@ const projects = [
                 index: 1,
                 title: 'All in',
                 slug: 'all-in',
-                audioFile: ''
+                audioFile: 'https://soundcloud.com/jarrell-brian/all-in-118-bpm-10-21-22-6-29?in=jarrell-brian/sets/quiet'
             },
             {
                 index: 2,
                 title: 'Ready to Go',
                 slug: 'ready-to-go',
-                audioFile: ''
+                audioFile: 'https://soundcloud.com/jarrell-brian/ready-2-go-140-10-21-22-6-32?in=jarrell-brian/sets/quiet'
             },
             {
                 index: 3,
                 title: 'The Way Out',
                 slug: 'the-way out',
-                audioFile: ''
+                audioFile: 'https://soundcloud.com/jarrell-brian/the-way-out-90-bpm-10-21-22-6?in=jarrell-brian/sets/quiet'
             },
             {
                 index: 4,
@@ -45,9 +45,9 @@ const projects = [
             },
             {
                 index: 7,
-                title: 'CCT',
-                slug: 'cct',
-                audioFile: ''
+                title: 'To the Sky',
+                slug: 'to-the-sky',
+                audioFile: 'https://soundcloud.com/jarrell-brian/to-the-sky-115-0-bpm-10-21-22?in=jarrell-brian/sets/quiet'
             },
             {
                 index: 8,
@@ -55,6 +55,12 @@ const projects = [
                 slug: 'turn-me-on',
                 audioFile: ''
             },
+			{
+				index: 9,
+				title: 'Versila',
+				slug: 'versila',
+				audioFile: 'https://soundcloud.com/jarrell-brian/versila-120-bpm-10-21-22-6-30?in=jarrell-brian/sets/quiet'
+			}
         ]
     },
     {
@@ -258,7 +264,7 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/dangerous?in=jarrell-brian/sets/catch22'
 			},
 			{
 				index: 2,
@@ -395,7 +401,7 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/cerebral-choir?in=jarrell-brian/sets/catch22'
 			},
 			{
 				index: 3,
@@ -638,7 +644,7 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/if-eye?in=jarrell-brian/sets/catch22'
 			},
 			{
 				index: 4,
@@ -961,10 +967,25 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/cog?in=jarrell-brian/sets/catch22'
 			},
 			{
 				index: 5,
+				title: 'WISEKING',
+				slug: 'wise-king',
+				description: "wise king focused on the money",
+				lyrics: [],
+				videoLinks: [
+					{
+						url: "",
+						title: "",
+						description: ""
+					}
+				],
+				audioFile: 'https://soundcloud.com/jarrell-brian/wiseking?in=jarrell-brian/sets/catch22'
+			},
+			{
+				index: 6,
 				title: 'WAR',
 				slug: 'war',
 				description: "war is inside",
@@ -1169,13 +1190,13 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/war?in=jarrell-brian/sets/catch22'
 			},
 			{
 				index: 6,
-				title: 'VERSILA',
-				slug: 'versila',
-				description: "hands up, Mr. DJ",
+				title: 'SPEAK IT',
+				slug: 'speak-it',
+				description: "eye see signs",
 				lyrics: [],
 				videoLinks: [
 					{
@@ -1184,7 +1205,7 @@ const projects = [
 						description: ""
 					}
 				],
-				audioFile: ''
+				audioFile: 'https://soundcloud.com/jarrell-brian/speak-it?in=jarrell-brian/sets/catch22'
 			},
 		]
     },
@@ -1309,11 +1330,15 @@ scene.add(cube);
 
 camera.position.z = 5;
 
+let rotateCube = false;
+
 var animate = function () {
 	requestAnimationFrame(animate);
 
-	// cube.rotation.x += 0.001;
-	// cube.rotation.y += 0.001;
+	if (rotateCube) {
+		cube.rotation.x += 0.001;
+		cube.rotation.y += 0.001;
+	}
 
 	renderer.render(scene, camera);
 };
@@ -1384,7 +1409,7 @@ function updateTracklist(projectTitle) {
 			${track.index}
 		</td>
 		<td>
-			<a href="www.google.com" target="_blank"
+			<a href="${track.audioFile ? track.audioFile : ''}" target="_blank"
 			style="color: white">
 				${track.title}
 			</a>	
@@ -1492,6 +1517,13 @@ function checkKey(e) {
 	else if (e.key == 'ArrowRight') {
 		cube.rotation.y += 0.1;
 		// right arrow
+	} 
+	else if (e.key == 'r') {
+		if (rotateCube) {
+			rotateCube = false;
+		} else {
+			rotateCube = true;
+		}
 	}
 	else if (e.key == 'x') {
 		cube.scale.x += 1;
