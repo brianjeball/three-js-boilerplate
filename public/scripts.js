@@ -1,3 +1,103 @@
+const projects = [
+    {
+        title: 'quiet',
+        rotation: {
+            x: 2,
+            y: 1.6,
+            z: 1
+        },
+        tracks: [
+            {
+                index: 1,
+                title: 'All in',
+                slug: 'all-in',
+                audioFile: ''
+            },
+            {
+                index: 2,
+                title: 'Ready to Go',
+                slug: 'ready-to-go',
+                audioFile: ''
+            },
+            {
+                index: 3,
+                title: 'The Way Out',
+                slug: 'the-way out',
+                audioFile: ''
+            },
+            {
+                index: 4,
+                title: 'Why oh Why',
+                slug: 'why-oh-why',
+                audioFile: ''
+            },
+            {
+                index: 5,
+                title: 'Climbing Mountains',
+                slug: 'climbing-mtns',
+                audioFile: ''
+            },
+            {
+                index: 6,
+                title: 'Father, Father',
+                slug: 'father, father',
+                audioFile: ''
+            },
+            {
+                index: 7,
+                title: 'CCT',
+                slug: 'cct',
+                audioFile: ''
+            },
+            {
+                index: 8,
+                title: 'Turn Me On',
+                slug: 'turn-me-on',
+                audioFile: ''
+            },
+        ]
+    },
+    {
+        title: 'catch22',
+        rotation: {
+            x: 4,
+            y: 4.7,
+            z: 1
+        }
+    },
+    {
+        title: 'row',
+        rotation: {
+            x: 3.59,
+            y: 7.89,
+            z: 1
+        }
+    },
+    {
+        title: 'arizona',
+        rotation: {
+            x: 6.8,
+            y: 1.54,
+            z: 1
+        }
+    },
+    {
+        title: 'sixty9',
+        rotation: {
+            x: 6.34,
+            y: 3.11,
+            z: 1
+        }
+    },
+    {
+        title: 'bigwin',
+        rotation: {
+            x: 9.46,
+            y: 3.4,
+            z: 1
+        }
+    }
+]
 var objects=new Array();
 var mouse = new THREE.Vector2();
 const color4 = new THREE.Color("rgb(100%, 0%, 0%)");
@@ -13,8 +113,6 @@ renderer.domElement.addEventListener('mousemove', onDocumentMouseMove, false);
 renderer.domElement.addEventListener('mousedown', onDocumentMouseDown, false);
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-
-// 
 
 // geom = new THREE.CubeGeometry( 5, 5, 5 );
 
@@ -107,87 +205,68 @@ cube.rotation.z = 1;
 
 animate();
 
-function rotateToSong(name) {
+const projectsListed = document.querySelectorAll('.song-label');
+projectsListed.forEach(project => {
+	const title = project.dataset.behavior.replace('song:','');
+	project.addEventListener('click', () => handleProjectClick(title))
+})
 
-	const songs = [
-		{
-			title: 'quiet',
-			rotation: {
-				x: 2,
-				y: 1.6,
-				z: 1
-			}
-		},
-		{
-			title: 'catch22',
-			rotation: {
-				x: 4,
-				y: 4.7,
-				z: 1
-			}
-		},
-		{
-			title: 'row',
-			rotation: {
-				x: 3.59,
-				y: 7.89,
-				z: 1
-			}
-		},
-		{
-			title: 'arizona',
-			rotation: {
-				x: 6.8,
-				y: 1.54,
-				z: 1
-			}
-		},
-		{
-			title: 'sixty9',
-			rotation: {
-				x: 6.34,
-				y: 3.11,
-				z: 1
-			}
-		},
-		{
-			title: 'bigwin',
-			rotation: {
-				x: 9.46,
-				y: 3.4,
-				z: 1
-			}
-		}
-	]
+function handleProjectClick(projectTitle) {
+	console.log(projectTitle)
+	rotateToSong(projectTitle);
+	updateTracklist(projectTitle);
+	return;
+}
 
-	console.log(name)
+function rotateToSong(projectTitle) {
 
-	let songToUse = {};
+	let projectToUse = {};
 
-	songs.forEach(song => {
-		if (song.title === name) {
-			songToUse = song;
+	projects.forEach(project => {
+		if (project.title === projectTitle) {
+			projectToUse = project;
 		}
 	})
 
-	const {x, y, z} = songToUse.rotation;
+	const {x, y, z} = projectToUse.rotation || {x:2,y:3,z:1};
   
 	cube.rotation.x = x;
 	cube.rotation.y = y;
 	cube.rotation.z = z;
 
-	songToUse = {}
+	projectToUse = {}
 
+	return;
+}
+
+function updateTracklist(projectTitle) {
+	const tracklistUl = document.querySelector("[data-behavior='tracklist']");
+	tracklistUl.innerHTML = `<tr>
+            <th>Track</th>
+            <th>Title</th>
+          </tr>`;
+
+	let tracksToUse = [];
+
+	projects.forEach(project => {
+		if (project.title === projectTitle) {
+			tracksToUse = project.tracks || [];
+		}
+	})
+
+	tracksToUse.forEach(track => {
+		let tr = document.createElement('tr');
+		tr.innerHTML = `<td align="left">${track.index}</td>
+		<td>${track.title}</td>`
+		
+		tracklistUl.append(tr);
+	})
 	return;
 }
 
 const rotationFormButton = document.querySelector("[data-behavior='rotation-form-button']");
 rotationFormButton.addEventListener('onClick', (e) => {
 	handleRotationSubmit();
-})
-const stats = document.querySelector("[data-behavior='rotation-stats:example']") ;
-stats.addEventListener('click', () => {
-
 })
 
 document.onkeydown = checkKey;

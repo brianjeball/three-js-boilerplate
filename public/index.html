@@ -1,5 +1,6 @@
 <html>
   <head>
+    <base href=".">
     <title>Three.js Boilerplate</title>
     <style>
       body {
@@ -84,11 +85,23 @@
         width: 150px;
         overflow: hidden;
       }
+
+      .tracklist-table {
+        min-width: 230px;
+      }
+
+      .tracklist-table th {
+          padding: 10px 20px;
+        }
+
+      .tracklist-table td {
+        padding: 10px 20px;
+      }
     </style>
   </head>
   <body style="overflow: hidden">
     <div class="main">
-      <div class="lyrics-container">
+      <div hidden class="lyrics-container">
         <ul class="lyrics">
           <li class="lyrics:exmaple">Jumping out the gym,</li>
           <li class="lyrics:exmaple">no carry yes man</li>
@@ -155,10 +168,10 @@
               </button>
             </label>
           </div>
-          <p class="song-label" data-behavior="song:quiet" onClick="rotateToSong('quiet')">QUIET</p>
-          <p class="song-label song-quiet" data-behavior="song:catch22" onClick="rotateToSong('catch22');">CATCH22</p>
-          <p hidden class="song-label song-arizona" data-behavior="song:arizona" onClick="rotateToSong('arizona')">ARIZONA</p>
-          <p class="song-label song-sixty9" data-behavior="song:sixty9" onClick="rotateToSong('sixty9')">SIXTY9</p>
+          <p class="song-label" data-behavior="song:quiet">QUIET</p>
+          <p class="song-label song-quiet" data-behavior="song:catch22">CATCH22</p>
+          <p hidden class="song-label song-arizona" data-behavior="song:arizona">ARIZONA</p>
+          <p class="song-label song-sixty9" data-behavior="song:sixty9">SIXTY9</p>
       </div>
       <div class="mc-subscription--wrapper" data-behavior="mc-subscription-wrapper"
         style="
@@ -278,8 +291,28 @@
           </tr>
         </table>
       </div>
+
+      <div
+        style="
+          position: absolute;
+          right: 0;
+          top: 300px;
+          color: white;
+          padding: 20px;
+          text-align: right;
+        "
+      >
+        <table class="tracklist-table" style="background-color: black; color: white"
+        data-behavior="tracklist">
+          <tr align="center">
+            <th>Track</th>
+            <th>Title</th>
+          </tr>
+		      
+        </table>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
-    <script src="/scripts.js"></script>
+    <script src="./scripts.js" type="module"></script>
   </body>
 </html>
