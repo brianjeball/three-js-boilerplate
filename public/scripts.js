@@ -1295,7 +1295,7 @@ var geometry = new THREE.BoxGeometry(1, 1, 1);
 
 var textureLoader = new THREE.TextureLoader();
 
-var texture0 = textureLoader.load('assets/images/quiet.jpg');
+var texture0 = textureLoader.load('assets/images/quiet-2.jpg');
 var texture1 = textureLoader.load('assets/images/catch22.jpeg');
 var texture2 = textureLoader.load('assets/images/arizona.jpg');
 var texture3 = textureLoader.load('assets/images/row.jpg');
