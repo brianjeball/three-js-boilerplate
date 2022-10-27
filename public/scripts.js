@@ -1,4 +1,12 @@
 const projects = [
+	{
+		title: 'bigwin',
+		rotation: {
+			x: 6.34,
+			y: 3.11,
+			z: 1
+		}
+	},
     {
         title: 'quiet',
         rotation: {
@@ -1296,7 +1304,7 @@ var texture5 = textureLoader.load('assets/images/crayons.jpg');
 
 // var texture0 = textureLoader.load('assets/images/stars.jpg');
 // var texture1 = textureLoader.load('assets/images/stars.jpg');
-var texture2 = textureLoader.load('assets/images/stars.jpg');
+// var texture2 = textureLoader.load('assets/images/stars.jpg');
 var texture3 = textureLoader.load('assets/images/stars.jpg');
 // var texture4 = textureLoader.load('assets/images/stars.jpg');
 var texture5 = textureLoader.load('assets/images/stars.jpg');
@@ -1467,7 +1475,7 @@ function twistCube() {
 
 function logStat(cubeRotation) {
 	const {x, y, z} = cubeRotation;
-	const stats = document.querySelector("[data-behavior='rotation-stats:example']") ;
+	const stats = document.querySelector("[data-behavior='rotation-stats']") ;
 	let div = document.createElement("div");
 	div.style = 'background-color: black; color: white';
 	div.innerHTML = `
@@ -1537,10 +1545,10 @@ function checkKey(e) {
 	}
 	else if (e.key == 't') {
 		twistCube()
-	// }
-	// else if (e.key == 'l') {
-	// 	logStat(cube.rotation)
-		// console.log(cube.rotation)
+	}
+	else if (e.key == 'l') {
+		logStat(cube.rotation)
+		console.log(cube.rotation)
 	// } else if (e.key == 'g') {
 	// 	console.log(cube.geometry.faces)
 	} else if (e.key == 'm') {

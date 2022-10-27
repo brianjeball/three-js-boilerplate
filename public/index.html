@@ -65,6 +65,12 @@
         margin: 10 auto;
       }
 
+      .song-label.song-bigwin {
+        background-color: #ffd240;
+        color: #000000;
+        border: 1px white solid;
+      }
+
       .song-label.song-quiet {
         background-color: #3697DB;
         color: #17354c;
@@ -188,8 +194,9 @@
           </div>
           <p class="song-label" data-behavior="song:quiet">QUIET</p>
           <p class="song-label song-quiet" data-behavior="song:catch22">CATCH22</p>
-          <p hidden class="song-label song-arizona" data-behavior="song:arizona">ARIZONA</p>
+          <p class="song-label song-arizona" data-behavior="song:arizona">ARIZONA</p>
           <p class="song-label song-sixty9" data-behavior="song:sixty9">SIXTY9</p>
+          <p class="song-label song-bigwin" data-behavior="song:bigwin">BGWN</p>
       </div>
       <div class="mc-subscription--wrapper" data-behavior="mc-subscription-wrapper"
         style="
@@ -291,7 +298,11 @@
             <td align="left">L</td>
             <td>Log Rotation Stats</td>
           </tr>
-		  <tr>
+          <tr class="">
+            <td align="left">R</td>
+            <td>Toggle Auto Rotation</td>
+          </tr>
+		      <tr>
             <td align="left">Right Arrow</td>
             <td>Rotate to right</td>
           </tr>
